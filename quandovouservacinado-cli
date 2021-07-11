@@ -1,0 +1,6 @@
+#!/bin/bash
+
+age=$1
+state=$2
+
+wget -qO- --post-data "age=$age&state=$state" https://quandovouservacinado.com | grep 'Previsão de vacinação' | grep -o '<strong>.*</strong>..' | sed 's/\(<strong>\|<\/strong>\)//g'
